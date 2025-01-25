@@ -5,7 +5,7 @@ import ContentLayout from "@/layouts/ContentLayout.astro";
 import PostCard from "@/components/PostCard.astro";
 
 const posts = await getCollection("posts");
-posts.sort((a, b) => new Date(b.data.date_created) - new Date(a.data.date_created));
+posts.sort((a, b) => new Date(b.data.created) - new Date(a.data.created));
 ---
 
 <ContentLayout title="All Posts | 0x15BA88FF Logs">
