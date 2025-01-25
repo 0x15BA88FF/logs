@@ -4,9 +4,7 @@ import rss, { pagesGlobToRssItems } from "@astrojs/rss";
 export async function GET(context) {
     const posts = await getCollection("posts");
     const filteredPosts = posts.filter((item) => !item.data.draft)
-    const sortedPostes = filteredPosts.sort((a, b) => {
-        return new Date(b.data.updated) - new Date(a.data.updated)
-    })
+    const sortedPostes = filteredPosts.sort((a, b) => new Date(b.data.updated) - new Date(a.data.updated)
 
     return rss({
         site: context.site,
