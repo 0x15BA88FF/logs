@@ -8,10 +8,10 @@ import * as post from "@/content/pages/index.md";
 const posts = await getCollection("posts");
 const recentPosts = posts.slice(0, 10);
 
-recentPosts.sort((a, b) => new Date(b.data.date_created) - new Date(a.data.date_created));
+recentPosts.sort((a, b) => new Date(b.data.created) - new Date(a.data.created));
 ---
 
-<ContentLayout title="Logs | 0x15BA88FF" cssclasses={post.frontmatter.cssclasses}>
+<ContentLayout title="Logs | 0x15BA88FF" styleclasses={post.frontmatter.styleclasses}>
     <div class="prose"><post.Content /></div>
     <hr class="my-4 border-surface-500"/>
     <div class="flex items-end justify-between mt-8">
