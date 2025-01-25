@@ -5,7 +5,7 @@ export async function GET(context) {
     const posts = await getCollection("posts");
     const filteredPosts = posts.filter((item) => !item.data.draft)
     const sortedPostes = filteredPosts.sort((a, b) => {
-        return new Date(b.data.date_modified) - new Date(a.data.date_modified)
+        return new Date(b.data.updated) - new Date(a.data.updated)
     })
 
     return rss({
@@ -17,8 +17,8 @@ export async function GET(context) {
             title: post.data.title,
             tags: post.data.tags,
             description: post.data.description,
-            date_created: post.data.date_created,
-            date_modified: post.data.date_modified,
+            created: post.data.created,
+            updated: post.data.updated,
             link: `/posts/${post.slug}`,
         })),
     })
