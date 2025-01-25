@@ -24,11 +24,11 @@ const formatDate = (date) => {
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
 
-const formatDateCreated = formatDate(new Date(post.data.date_created));
-const formatDateModified = formatDate(new Date(post.data.date_modified));
+const formatDateCreated = formatDate(new Date(post.data.created));
+const formatDateModified = formatDate(new Date(post.data.updated));
 ---
 
-<BlogLayout title={`${post.data.title} | 0x15BA88FF Logs`} cssclasses={post.data.cssclasses}>
+<BlogLayout title={`${post.data.title} | 0x15BA88FF Logs`} styleclasses={post.data.styleclasses}>
     <div>
         {post.data.banner?.image &&
             <img src={post.data.banner.image} alt={post.data.banner.alt} class="aspect-[2.9] mb-4 rounded-2xl" />
