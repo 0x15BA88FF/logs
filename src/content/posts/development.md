@@ -2,12 +2,11 @@
 title: "Test Blog"
 description: "A test blog post for testing my blog"
 tags: ["development"]
-date_created: "2024-12-21T15:30Z"
-date_modified: "2024-12-16T02:34Z"
+created: "2024-12-21T15:30Z"
+updated: "2024-12-16T02:34Z"
 draft: true
-banner:
-    image: "https://cdn.dribbble.com/userupload/11507678/file/original-38d357eb2ae02b62d300c9fdb10769fa.jpg?resize=1600x543&vertical=center"
-    alt: "Cyber Security"
+banner: "https://cdn.dribbble.com/userupload/11507678/file/original-38d357eb2ae02b62d300c9fdb10769fa.jpg?resize=1600x543&vertical=center"
+banner_alt: "Cyber Security"
 ---
 
 # This is a Heading h1
