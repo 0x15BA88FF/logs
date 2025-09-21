@@ -4,8 +4,6 @@
 import "@/styles/global.css";
 import "@fontsource-variable/jetbrains-mono";
 
-import SearchModal from "@/components/SearchModal.jsx";
-
 const { title, cssclasses } = Astro.props;
 ---
 
@@ -17,14 +15,8 @@ const { title, cssclasses } = Astro.props;
         <link rel="sitemap" href="/logs/sitemap-index.xml" />
         <meta charset="UTF-8">
         <title>{title}</title>
-        <!--<ClientRouter />-->
     </head>
     <body class={`flex text-surface-50 bg-surface-900 overflow-y-scroll ${cssclasses ? cssclasses : ""}`}>
-        <SearchModal client:visible />
         <slot />
     </body>
-    <script>
-        import "@/scripts/controlTheme.js";
-        import "@/scripts/controlSearchModal.js";
-    </script>
 </html>
