@@ -23,9 +23,7 @@ export default defineConfig({
                 dark: "catppuccin-mocha"
             },
         },
-        remarkPlugins: [
-            remarkMath
-        ],
+        remarkPlugins: [remarkMath],
         rehypePlugins: [
             rehypeSlug,
             [
@@ -43,10 +41,6 @@ export default defineConfig({
     integrations: [
         react(),
         tailwind(),
-        sitemap({
-            priority: 1,
-            changefreq: "daily",
-        }),
-    ],
-    experimental: { contentLayer: true }
+        sitemap({ priority: 1, changefreq: "daily" }),
+    ]
 });

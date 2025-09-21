@@ -20,9 +20,7 @@ recentPosts.sort((a, b) => new Date(b.data.created) - new Date(a.data.created));
     </div>
     <ul class="my-4">
         {recentPosts.length > 0 ? recentPosts.map(post => (
-            <li>
-                <PostCard slug={post.slug} title={post.data.title} description={post.data.description} tags={post.data.tags} />
-            </li>
+            <li><PostCard id={post.id} title={post.data.title} description={post.data.description} tags={post.data.tags} /></li>
         )) : (
             <li>
                 <p class="mb-4 p-8 font-bold text-center">No Posts Found.</p>

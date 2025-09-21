@@ -1,18 +1,19 @@
 ---
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
+import PostCard from "@/components/PostCard.astro";
 import ContentLayout from "@/layouts/ContentLayout.astro";
 import TaggedPostsList from "@/components/TaggedPostsList.astro";
 
 const posts = await getCollection("posts");
 const tags = [...new Set(posts.map((post: any) => post.data.tags).flat())];
 
-const tagDetailsPromises = tags.map(async slug => {
-    const tagDetails = await getEntryBySlug("tags", slug);
+const tagDetailsPromises = tags.map(async id => {
+    const tagDetails = await getEntry("tags", id);
 
     return {
-        slug: slug,
-        title: tagDetails?.data.title || slug,
+        id,
+        title: tagDetails?.data.title || id,
         description: tagDetails?.data.description || ""
     };
 });
@@ -27,11 +28,10 @@ const tagsWithDetails = await Promise.all(tagDetailsPromises);
             <hr class="my-4 border-surface-500"/>
             <li class="py-4">
                 <div class="flex items-end justify-between mb-4">
-                    <a class="px-4 py-2 text-md md:text-2xl font-bold bg-primary-900 text-primary-500 rounded" href={`/logs/tags/${tag.slug}`}>#{tag.title}</a>
-                    <a class="text-primary-700 hover:text-primary-500" href={`/logs/tags/${tag.slug}`}>See more</a>
+                    <a class="px-4 py-2 text-md md:text-2xl font-bold bg-primary-900 text-primary-500 rounded" href={`/logs/tags/${tag.id}`}># {tag.title}</a>
                 </div>
                 <p>{tag.description}</p>
-                <TaggedPostsList tag={tag.slug} max={10} />
+                <TaggedPostsList tag={tag.id} max={10} />
             </li>
         )) : (
             <li>

@@ -4,8 +4,8 @@
     "version": "0.0.1",
     "scripts": {
         "astro": "astro",
-        "sync": "astro sync",
         "dev": "astro dev",
+        "sync": "astro sync",
         "check": "astro check",
         "build": "astro build",
         "preview": "astro preview"
@@ -18,7 +18,7 @@
         "@fontsource-variable/jetbrains-mono": "^5.1.1",
         "@types/react": "^19.0.2",
         "@types/react-dom": "^19.0.2",
-        "astro": "^4.16.16",
+        "astro": "^5.13.9",
         "katex": "^0.16.11",
         "lucide-react": "^0.469.0",
         "react": "^19.0.0",

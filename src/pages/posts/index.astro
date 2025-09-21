@@ -15,7 +15,7 @@ posts.sort((a, b) => new Date(b.data.created) - new Date(a.data.created));
     <ul>
         {posts.length > 0 ? posts.map(post => (
             <li>
-                <PostCard slug={post.slug} title={post.data.title} description={post.data.description} tags={post.data.tags} />
+                <PostCard id={post.id} title={post.data.title} description={post.data.description} tags={post.data.tags} />
             </li>
         )) : (
             <li>

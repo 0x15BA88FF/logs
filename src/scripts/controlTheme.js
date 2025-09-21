@@ -1,7 +1,10 @@
 const themeToggle = document.querySelector("#theme-toggle");
 const htmlElement = document.documentElement;
 
-if (localStorage.theme === "dark" || (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+if (localStorage.theme === "dark" || (
+    !localStorage.theme &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
     htmlElement.classList.add("dark");
     localStorage.theme = "dark";
 } else {

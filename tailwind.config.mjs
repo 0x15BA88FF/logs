@@ -5,7 +5,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                "mono": ["JetBrains Mono Variable", "ui-monospace", "SFMono-Regular", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+                "mono": ["JetBrains Mono Variable", "monospace"],
             },
             borderRadius: {
                 DEFAULT: "0.5rem",
@@ -40,7 +40,5 @@ export default {
             }
         }
     },
-    plugins: [
-        require("@tailwindcss/typography")
-    ]
+    plugins: [require("@tailwindcss/typography")]
 }

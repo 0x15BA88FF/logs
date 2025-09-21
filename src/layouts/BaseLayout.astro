@@ -1,8 +1,6 @@
 ---
-//import { ClientRouter } from "astro:transitions";
-
-import "@/styles/global.css";
 import "@fontsource-variable/jetbrains-mono";
+import "@/styles/global.css";
 
 const { title, cssclasses } = Astro.props;
 ---
@@ -16,7 +14,8 @@ const { title, cssclasses } = Astro.props;
         <meta charset="UTF-8">
         <title>{title}</title>
     </head>
-    <body class={`flex text-surface-50 bg-surface-900 overflow-y-scroll ${cssclasses ? cssclasses : ""}`}>
+    <body class={`min-h-screen flex text-surface-50 bg-surface-900 overflow-y-scroll ${cssclasses ? cssclasses : ""}`}>
         <slot />
     </body>
+    <script>import "@/scripts/controlTheme.js";</script>
 </html>

@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntryBySlug } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 
 import ContentLayout from "@/layouts/ContentLayout.astro";
 import TaggedPostsList from "@/components/TaggedPostsList.astro";
@@ -11,11 +11,11 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const tagDetails = await getEntryBySlug("tags", slug);
-const { Content } = await tagDetails?.render() || { Content: undefined };
+const tagDetails = await getEntry("tags", slug);
+const { Content } = await tagDetails?.render || { Content: undefined };
 
 const tag = {
-    slug: slug,
+    id: slug,
     title: tagDetails?.data.title || slug,
     description: tagDetails?.data.description || "No Description Found",
     styleclasses: tagDetails?.data.styleclasses || "",
@@ -30,5 +30,5 @@ const tag = {
         <div class="prose"><Content /></div>
     }
     <hr class="my-8 border-surface-500"/>
-    <TaggedPostsList tag={tag.slug} />
+    <TaggedPostsList tag={tag.id} />
 </ContentLayout>

@@ -11,7 +11,7 @@ posts.sort((a, b) => new Date(b.data.date_created) - new Date(a.data.date_create
 <ul class="flex flex-col mt-4">
     {posts.length > 0 ? posts.slice(0, max).map(post => (
         <li>
-            <PostCard slug={post.slug} title={post.data.title} description={post.data.description} tags={post.data.tags} />
+            <PostCard id={post.id} title={post.data.title} description={post.data.description} tags={post.data.tags} />
         </li>
     )) : (
         <li>
