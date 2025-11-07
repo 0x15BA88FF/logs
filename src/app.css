@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+@import "rehype-callouts/theme/obsidian";
+
+@plugin "@tailwindcss/typography";
+
+:root[data-theme="light"] {
+  --foreground: oklch(14.5% 0 0);
+  --background: oklch(98.5% 0 0);
+  --secondary: oklch(92.2% 0 0);
+  --secondary: oklch(92.2% 0 0);
+  --border: oklch(92.2% 0 0);
+  --primary: #15ba88;
+  --muted: oklch(92.2% 0 0);
+  --muted-foreground: oklch(26.9% 0 0);
+}
+:root[data-theme="dark"] {
+  --foreground: oklch(98.5% 0 0);
+  --background: oklch(20.5% 0 0);
+  --secondary: oklch(26.9% 0 0);
+  --border: oklch(26.9% 0 0);
+  --primary: #15ba88;
+  --muted: oklch(26.9% 0 0);
+  --muted-foreground: oklch(92.2% 0 0);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-primary: var(--primary);
+  --color-border: var(--border);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --radius: 0.8rem;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+::-webkit-scrollbar {
+  @apply h-2 w-2;
+}
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-foreground;
+}
+
+* {
+  @apply border-border font-mono outline-none;
+}
+
+body {
+  @apply bg-background text-foreground;
+}
+
+a {
+  @apply hover:text-primary;
+}
+
+.prose {
+  @apply prose-sm max-w-full prose-neutral md:prose-base;
+}
+:root[data-theme="dark"] .prose {
+  @apply prose-invert;
+}
+
+.prose img {
+  @apply rounded
+}
+
+pre code {
+  white-space: pre;
+  overflow-x: auto;
+}
+
+:root[data-theme="dark"] .shiki,
+:root[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.heading-anchor {
+  @apply relative no-underline after:content-["#"];
+}
+.heading-anchor::after {
+  @apply absolute -right-8 text-transparent;
+}
+.heading-anchor:hover::after {
+  @apply cursor-pointer text-primary;
+}
+
+.callout {
+  mix-blend-mode: unset;
+}
+.callout-title {
+  @apply gap-4 pt-4;
+}
