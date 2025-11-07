@@ -31,13 +31,16 @@ jobs:
         run: npm ci
 
       - name: Build SvelteKit site
+        env:
+          NODE_ENV: production
         run: npm run build
 
+      # 👇 Upload correct build directory (SvelteKit outputs to `build`)
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          name: my-pages-artifact
-          path: build
+          name: github-pages   # ✅ use default Pages artifact name
+          path: build          # ✅ ensure this matches your adapter output
 
   deploy:
     needs: build
@@ -49,5 +52,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: my-pages-artifact # 👈 matches above

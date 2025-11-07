@@ -1,5 +1,6 @@
 import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
+
 import { mdsvex } from "mdsvex";
 import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
@@ -57,7 +58,6 @@ const config = {
       ],
       highlight: {
         highlighter: async (code, lang) => {
-          // Use the already created highlighter
           const html = highlighter.codeToHtml(code, {
             lang: lang || "text",
             themes: {
