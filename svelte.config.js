@@ -1,6 +1,5 @@
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
-
 import { mdsvex } from "mdsvex";
 import remarkMath from "remark-math";
 import rehypeSlug from "rehype-slug";
@@ -11,9 +10,6 @@ import remarkFootnotes from "remark-footnotes";
 import rehypeKatexSvelte from "rehype-katex-svelte";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
-
-const dev = process.argv.includes("dev");
-const base = dev ? "" : "";
 
 const highlighter = await createHighlighter({
   themes: ["catppuccin-latte", "catppuccin-mocha"],
@@ -28,7 +24,7 @@ const highlighter = await createHighlighter({
     "json",
     "markdown",
     "diff",
-  ]
+  ],
 });
 
 /** @type {import("@sveltejs/kit").Config} */
@@ -38,36 +34,48 @@ const config = {
     vitePreprocess(),
     mdsvex({
       extensions: [".svx", ".md"],
-      remarkPlugins: [
-        remarkMath,
-        remarkFootnotes,
-      ],
+      remarkPlugins: [remarkMath, remarkFootnotes],
       rehypePlugins: [
         rehypeSlug,
         rehypeCallouts,
         rehypeKatexSvelte,
-        [ rehypeFigure, { className: "md-image zoomable-image cursor-zoom-in", figcaption: true } ],
-        [ rehypeExternalLinks, { target: "_blank", rel: ["noopener", "noreferrer"] } ],
-        [ rehypeAutolinkHeadings, { behavior: "wrap", properties: { className: ["heading-anchor"] } } ],
+        [
+          rehypeFigure,
+          {
+            className: "md-image zoomable-image cursor-zoom-in",
+            figcaption: true,
+          },
+        ],
+        [
+          rehypeExternalLinks,
+          { target: "_blank", rel: ["noopener", "noreferrer"] },
+        ],
+        [
+          rehypeAutolinkHeadings,
+          { behavior: "wrap", properties: { className: ["heading-anchor"] } },
+        ],
       ],
       highlight: {
         highlighter: async (code, lang) => {
+          // Use the already created highlighter
           const html = highlighter.codeToHtml(code, {
             lang: lang || "text",
             themes: {
               dark: "catppuccin-mocha",
               light: "catppuccin-latte",
-            }
+            },
           });
-          return `{@html \`${html}\` }`;
-        }
-      }
-    })
+          return `{@html \`${html}\`}`;
+        },
+      },
+    }),
   ],
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      fallback: "404.html",
+    }),
     paths: {
-      base,
+      base: process.argv.includes("dev") ? "" : process.env.BASE_PATH
     },
   },
 };
