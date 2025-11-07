@@ -1,4 +1,4 @@
-import adapter from "@sveltejs/adapter-auto";
+import adapter from "@sveltejs/adapter-static";
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
 
 import { mdsvex } from "mdsvex";
@@ -11,6 +11,9 @@ import remarkFootnotes from "remark-footnotes";
 import rehypeKatexSvelte from "rehype-katex-svelte";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
+const dev = process.argv.includes("dev");
+const base = dev ? "" : "/YOUR_REPO_NAME";
 
 const highlighter = await createHighlighter({
   themes: ["catppuccin-latte", "catppuccin-mocha"],
@@ -63,6 +66,9 @@ const config = {
   ],
   kit: {
     adapter: adapter(),
+    paths: {
+      base,
+    },
   },
 };
 
