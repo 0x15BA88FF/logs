@@ -17,7 +17,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,13 +31,12 @@ jobs:
         run: npm ci
 
       - name: Build SvelteKit site
-        env:
-          NODE_ENV: production
         run: npm run build
 
-      - name: Upload static files
+      - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: my-pages-artifact
           path: build
 
   deploy:
@@ -51,3 +49,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: my-pages-artifact # 👈 matches above
