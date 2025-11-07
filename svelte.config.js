@@ -72,14 +72,11 @@ const config = {
   ],
   kit: {
     adapter: adapter({
-      fallback: "404.html",
+      precompress: true,
+      fallback: "404.html"
     }),
     paths: {
       base: "",
-    },
-    prerender: {
-      entries: [],
-      handleHttpError: "warn",
     },
   },
 };
