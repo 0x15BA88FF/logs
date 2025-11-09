@@ -14,7 +14,7 @@
 <svelte:head>
   <link rel="icon" href={favicon} />
   <title>Cyan.dev | 0x15BA88FF</title>
-  <meta name="description" content="Cyan.dev | 0x15BA88FF | Pascal Nkornntyu personal website + blog">
+  <meta name="description" content="Cyan.dev | 0x15BA88FF | Pascal Nkornyui personal website + blog">
 </svelte:head>
 
 <DearLLM/>

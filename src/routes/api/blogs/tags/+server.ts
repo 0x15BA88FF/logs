@@ -1,4 +1,4 @@
-import { getAllTags } from "$lib/utils/blogs";
+import { getAllTags } from "$lib/utils/tags";
 
 import type { RequestHandler } from "@sveltejs/kit";
 
