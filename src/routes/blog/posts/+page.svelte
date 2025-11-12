@@ -6,12 +6,11 @@
 
 <svelte:head>
   <title>Blogs | 0x15BA88FF Cyan.dev</title>
-  <meta name="description" content="A bump of all my blog posts | 0x15BA88FF | cyan.dev" />
+  <meta name="description" content="All my blog posts | 0x15BA88FF cyan.dev" />
 </svelte:head>
 
 <div class="flex flex-col gap-4">
-  <h1 class="text-3xl font-bold">Blog</h1>
-  <p class="text-muted-foreground">Blog posts dump</p>
+  <h1 class="mb-4 text-3xl font-bold">Blog</h1>
 
   <div class="flex flex-col mt-4">
     {#if data.posts?.length}

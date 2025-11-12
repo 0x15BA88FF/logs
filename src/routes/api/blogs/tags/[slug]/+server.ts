@@ -2,6 +2,7 @@ import { getBlogsByTag } from "$lib/utils/blogs";
 
 import type { RequestHandler } from "@sveltejs/kit";
 
+
 export const GET: RequestHandler = async ({ params }) => {
   const { slug } = params;
 
@@ -14,7 +15,7 @@ export const GET: RequestHandler = async ({ params }) => {
 
   const blogs = await getBlogsByTag(slug);
 
-  return new Response(JSON.stringify({ tag: slug, posts: blogs }), {
+  return new Response(JSON.stringify(blogs), {
     headers: { "Content-Type": "application/json" },
   });
 };

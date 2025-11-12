@@ -43,10 +43,10 @@
   {#if loading}
     <p>Loading...</p>
   {:else if BlogContent}
-    <h1 class="text-3xl font-bold mb-4">{metadata.title}</h1>
-    <p class="mb-6 text-muted-foreground">{metadata.description}</p>
+    <h1 class="text-3xl font-bold">{metadata.title}</h1>
+    <p class="text-muted-foreground">{metadata.description}</p>
 
-    <table class="my-4 w-full">
+    <table>
       <tbody>
         <tr>
           <td class="flex items-center gap-2 py-2"><Clock size={20} /><p>Created</p></td>

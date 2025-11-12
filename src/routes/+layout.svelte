@@ -1,6 +1,6 @@
 <script lang="ts">
   import "../app.css";
-  import favicon from "$lib/assets/favicon.svg";
+  import favicon from "$lib/assets/favicon.png";
 
   import Navbar from "$lib/components/Navbar.svelte"
   import DearLLM from "$lib/components/DearLLM.svelte"
@@ -14,7 +14,7 @@
 <svelte:head>
   <link rel="icon" href={favicon} />
   <title>Cyan.dev | 0x15BA88FF</title>
-  <meta name="description" content="Cyan.dev | 0x15BA88FF | Pascal Nkornyui personal website + blog">
+  <meta name="description" content="Cyan.dev | 0x15BA88FF | Pascal Nkornyui personal website & blog">
 </svelte:head>
 
 <DearLLM/>

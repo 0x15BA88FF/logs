@@ -9,24 +9,19 @@
   --foreground: oklch(14.5% 0 0);
   --background: oklch(98.5% 0 0);
   --secondary: oklch(92.2% 0 0);
-  --secondary: oklch(92.2% 0 0);
   --border: oklch(92.2% 0 0);
-  --primary: #0B6046;
-  --muted: oklch(92.2% 0 0);
-  --muted-foreground: oklch(26.9% 0 0);
-  --destructive: oklch(0.6368 0.2078 25.33);
-  --destructive-foreground: oklch(0.9848 0 0);
+  --primary: #0b6046;
+  --muted: oklch(97% 0 0);
+  --muted-foreground: oklch(20.5% 0 0);
 }
 :root[data-theme="dark"] {
   --foreground: oklch(98.5% 0 0);
-  --background: oklch(20.5% 0 0);
+  --background: oklch(14.5% 0 0);
   --secondary: oklch(26.9% 0 0);
   --border: oklch(26.9% 0 0);
   --primary: #15ba88;
-  --muted: oklch(26.9% 0 0);
-  --muted-foreground: oklch(92.2% 0 0);
-  --destructive: oklch(0.3959 0.1331 25.72)
-  --destructive-foreground: oklch(0.9848 0 0)
+  --muted: oklch(20.5% 0 0);
+  --muted-foreground: oklch(97% 0 0);
 }
 
 @theme {
@@ -39,10 +34,7 @@
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
 
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-
-  --radius: 0.8rem;
+  --radius: 0.75rem;
   --font-mono: "JetBrains Mono", monospace;
 }
 
@@ -79,7 +71,7 @@ a {
 }
 
 .prose img {
-  @apply rounded
+  @apply rounded;
 }
 
 pre code {

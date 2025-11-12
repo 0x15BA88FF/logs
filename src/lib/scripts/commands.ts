@@ -2,6 +2,7 @@ import { actions } from "$lib/scripts/actions";
 
 import type { Command } from "$lib/types/commands"
 
+
 export const commands: Command[] = [
   {
     name: "echo",

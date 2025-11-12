@@ -2,6 +2,7 @@ import { getAllBlogs } from "$lib/utils/blogs";
 
 import type { RequestHandler } from "@sveltejs/kit";
 
+
 export const GET: RequestHandler = async () => {
   try {
     const blogs = await getAllBlogs();

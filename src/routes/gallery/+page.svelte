@@ -8,14 +8,13 @@
 </svelte:head>
 
 <div class="flex flex-col gap-4">
-  <h1 class="text-3xl font-bold">Gallery</h1>
-  <p class="text-muted-foreground">Memories in the moment</p>
+  <h1 class="mb-4 text-3xl font-bold">Gallery</h1>
 
   {#if data.gallery?.length}
     <div class="columns-2 gap-2 space-y-2">
       {#each data.gallery as image}
         <div class="break-inside-avoid">
-          <div class="zoomable-image w-full bg-secondary rounded overflow-hidden cursor-zoom-in" style="height: {image.height}px;">
+          <div class="zoomable-image w-full bg-secondary rounded overflow-hidden cursor-zoom-in">
             <img src={image.url} alt={image.alt} class="w-full h-full object-cover" loading="lazy"/>
           </div>
         </div>

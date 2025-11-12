@@ -2,6 +2,7 @@ import { writable, type Writable } from "svelte/store";
 
 import type { Theme } from "$lib/types/theme";
 
+
 const isTheme = (value: unknown): value is Theme => {
   return value === "light" || value === "dark";
 }

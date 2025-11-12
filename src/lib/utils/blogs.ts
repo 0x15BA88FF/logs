@@ -1,52 +1,77 @@
-import fs from "fs";
 import path from "path";
+
 import { sortByDateDescending, isNotNull } from "$lib/utils/shared";
 
-import type { BlogFrontmatter } from "$lib/types/blog";
-import type { Frontmatter } from "$lib/types/frontmatter";
+import type { BlogFrontmatter, TagSummary } from "$lib/types/blogs";
 
-export const importBlog = async (slug: string): Promise<BlogFrontmatter | null>  => {
-  try {
-    const mod = await import(`$lib/content/blog/posts/${slug}.md`);
-    const data = (mod?.metadata ?? {}) as Frontmatter;
 
-    const tagsArray = Array.isArray(data.tags)
-      ? data.tags
-      : typeof data.tags === "string"
-      ? [data.tags]
-      : [];
+const markdownFiles = import.meta.glob("$lib/content/blog/posts/*.md", { eager: true });
 
-    return {
-      slug,
-      title: data.title ?? slug,
-      description: data.description ?? "",
-      tags: tagsArray,
-      created: data.created,
-      updated: data.updated,
-      draft: data.draft ?? true,
-    };
-  } catch (err) {
-    return null;
+function normalizeTags(input: unknown): string[] {
+  if (Array.isArray(input)) {
+    return input.filter((item): item is string => typeof item === "string");
   }
+  if (typeof input === "string") {
+    return [input];
+  }
+  return [];
 }
 
 export const getAllBlogs = async (): Promise<BlogFrontmatter[]> => {
-  const blogDir = path.resolve("src/lib/content/blog/posts");
+  const blogFrontmatters: (BlogFrontmatter | null)[] = await Promise.all(
+    Object.entries(markdownFiles).map(async ([filepath, module]) => {
+      const slug = path.basename(filepath, ".md");
+      const metadata: Record<string, unknown> = (module as { metadata?: Record<string, unknown> }).metadata ?? {};
 
-  const slugs = fs
-    .readdirSync(blogDir, { withFileTypes: true })
-    .filter((file) => file.isFile() && file.name.endsWith(".md"))
-    .map((file) => file.name.replace(/\.md$/, ""));
+      const {
+        title = slug,
+        description = "",
+        tags = [],
+        created,
+        updated,
+        draft = true,
+      } = metadata as Partial<BlogFrontmatter>;
 
-  const blogs = await Promise.all(slugs.map(importBlog));
-  return blogs.filter(isNotNull).sort(sortByDateDescending);
-}
+      const normalizedTags: string[] = normalizeTags(tags);
+
+      return {
+        slug,
+        title,
+        description,
+        tags: normalizedTags,
+        created,
+        updated,
+        draft,
+      };
+    })
+  );
+
+  return blogFrontmatters.filter(isNotNull).sort(sortByDateDescending);
+};
 
 export const getBlogsByTag = async (tag: string): Promise<BlogFrontmatter[]> => {
-  const blogs = await getAllBlogs();
-  const normalized = tag.trim().toLowerCase();
+  const allBlogs: BlogFrontmatter[] = await getAllBlogs();
+  const normalizedTag: string = tag.trim().toLowerCase();
 
-  return blogs
-    .filter((b) => b.tags.map((t) => t.toLowerCase()).includes(normalized))
+  return allBlogs
+    .filter((blog) =>
+      blog.tags.map((t) => t.toLowerCase()).includes(normalizedTag)
+    )
     .sort(sortByDateDescending);
-}
+};
+
+export const getAllTags = async (): Promise<TagSummary[]> => {
+  const allBlogs: BlogFrontmatter[] = await getAllBlogs();
+  const tagCountMap: Record<string, number> = {};
+
+  for (const blog of allBlogs) {
+    for (const tag of blog.tags) {
+      const lowerTag: string = tag.toLowerCase();
+      tagCountMap[lowerTag] = (tagCountMap[lowerTag] ?? 0) + 1;
+    }
+  }
+
+  return Object.entries(tagCountMap)
+    .map(([tag, count]) => ({ tag, count }))
+    .sort((a, b) => b.count - a.count);
+};

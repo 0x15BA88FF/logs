@@ -11,8 +11,7 @@
 </svelte:head>
 
 <div class="flex flex-col gap-4">
-  <h1 class="text-3xl font-bold">Tag Index</h1>
-  <p class="text-muted-foreground">Tag-post relation index</p>
+  <h1 class="mb-4 text-3xl font-bold">Tag Index</h1>
 
   <div class="flex flex-col gap-8 mt-4">
   {#if data.tagsData?.length}

@@ -1,6 +1,5 @@
 import { setTheme, toggleTheme } from "$lib/stores/theme";
 
-export type ColorScheme = "light" | "dark" | "toggle";
 
 export const actions = {
   goto: (url: string): string | void => {
@@ -18,7 +17,7 @@ export const actions = {
 
   echo: (text: string): string => text,
 
-  colorscheme: (scheme: ColorScheme): string | void => {
+  colorscheme: (scheme: string): string | void => {
     if (scheme === "light" || scheme === "dark") {
       setTheme(scheme);
       return `Color scheme set to ${scheme}`;

@@ -1,8 +1,10 @@
 <script lang="ts">
-  import Content from "$lib/content/pages/About.md";
+  import Content from "$lib/content/About.md";
   import ProjectCard from "$lib/components/ProjectCard.svelte";
   import BlogPostCard from "$lib/components/BlogPostCard.svelte";
   import SectionHeader from "$lib/components/SectionHeader.svelte";
+  import ExperienceTimeline from "$lib/components/ExperienceTimeline.svelte";
+  import AchievementTimeline from "$lib/components/AchievementTimeline.svelte";
   import { ChevronRight, Github, Linkedin, Twitter, Mail } from "@lucide/svelte";
 
   export let data;
@@ -16,12 +18,28 @@
       <Content />
 
       <div class="flex gap-4 pb-6 border-b">
-        <a href="https://github.com/0x15ba88ff" target="_blank" aria-label="Visit my github"><Github/></a>
-        <a href="https://linkedin.com/in/0x15ba88ff" aria-label="Visit my linkedin"><Linkedin/></a>
         <a href="https://x.com/0x15ba88ff" aria-label="Visit my x"><Twitter/></a>
+        <a href="https://linkedin.com/in/0x15ba88ff" aria-label="Visit my linkedin"><Linkedin/></a>
+        <a href="https://github.com/0x15ba88ff" target="_blank" aria-label="Visit my github"><Github/></a>
         <a href="mailto:15ba88+hello@proton.me" aria-label="Send me an email"><Mail/></a>
       </div>
     </div>
+
+    <SectionHeader title="Experiences" />
+
+    {#if data.experiences?.length}
+      <ExperienceTimeline experiences={data.experiences} />
+    {:else}
+      <p>No experiences yet.</p>
+    {/if}
+
+    <SectionHeader title="Achievements" />
+
+    {#if data.achievements?.length}
+      <AchievementTimeline achievements={data.achievements} />
+    {:else}
+      <p>No achievements yet.</p>
+    {/if}
 
     <SectionHeader title="Projects" href="/projects"/>
 

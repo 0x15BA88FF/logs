@@ -1,5 +1,7 @@
 import { getBlogsByTag } from "$lib/utils/blogs";
+
 import type { PageServerLoad } from "./$types";
+
 
 export const load: PageServerLoad = async ({ fetch }) => {
   const tagsResponse = await fetch("/api/blogs/tags");

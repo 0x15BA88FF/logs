@@ -7,3 +7,8 @@ export interface BlogFrontmatter {
   created?: string;
   updated?: string;
 }
+
+export interface TagSummary {
+  tag: string;
+  count: number;
+}
