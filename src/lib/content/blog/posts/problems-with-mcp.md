@@ -1,7 +1,7 @@
 ---
 title: "My Problems with MCP"
 description: "A rant on why MCP sucks"
-tags: [""]
+tags: ["AI"]
 created: "2025-11-15T23:06Z"
 updated: "2025-11-15T23:06Z"
 draft: true
