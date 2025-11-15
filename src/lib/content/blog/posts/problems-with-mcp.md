@@ -107,8 +107,11 @@ fundamentally flawed spec and not an actual fix.
 
 > [!INFO] Sources
 > [Youtube - Theo: Anthropic admits that MCP sucks](https://www.youtube.com/watch?v=1piFEKA9XL0&pp=ygURbWNwIHdhcyBhIG1pc3Rha2XSBwkJAwoBhyohjO8%3D)
+>
 > [Youtube - Theo: MCP was a mistake](https://www.youtube.com/watch?v=bAYZjVAodoo&t=2506s&pp=ygURbWNwIHdhcyBhIG1pc3Rha2U%3D)
+>
 > [Cloudflare: code mode](https://blog.cloudflare.com/code-mode/)
+>
 > [Anthropic: code execution with mcp](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
 ### Authentication
