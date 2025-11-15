@@ -105,10 +105,10 @@ this is more of a duct tape fix on top of a fundamentally flawed spec and not
 an actual fix.
 
 > [!INFO] Sources
-> [https://www.youtube.com/watch?v=1piFEKA9XL0&pp=ygURbWNwIHdhcyBhIG1pc3Rha2XSBwkJAwoBhyohjO8%3D](https://www.youtube.com/watch?v=1piFEKA9XL0&pp=ygURbWNwIHdhcyBhIG1pc3Rha2XSBwkJAwoBhyohjO8%3D)
-> [https://www.youtube.com/watch?v=bAYZjVAodoo&t=2506s&pp=ygURbWNwIHdhcyBhIG1pc3Rha2U%3D](https://www.youtube.com/watch?v=bAYZjVAodoo&t=2506s&pp=ygURbWNwIHdhcyBhIG1pc3Rha2U%3D)
-> [https://blog.cloudflare.com/code-mode/](https://blog.cloudflare.com/code-mode/)
-> [https://www.anthropic.com/engineering/code-execution-with-mcp](https://www.anthropic.com/engineering/code-execution-with-mcp)
+> [Youtube - Theo: Anthropic admits that MCP sucks](https://www.youtube.com/watch?v=1piFEKA9XL0&pp=ygURbWNwIHdhcyBhIG1pc3Rha2XSBwkJAwoBhyohjO8%3D)
+> [Youtube - Theo: MCP was a mistake](https://www.youtube.com/watch?v=bAYZjVAodoo&t=2506s&pp=ygURbWNwIHdhcyBhIG1pc3Rha2U%3D)
+> [Cloudflare: code mode](https://blog.cloudflare.com/code-mode/)
+> [Anthropic: code execution with mcp](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
 ### Authentication
 
