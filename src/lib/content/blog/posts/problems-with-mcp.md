@@ -98,11 +98,12 @@ ambiguous responses like `failed to x y z`, which we will only get to know
 after the request has gone to the server and the server has caught the issue
 for us.
 
-This fact has come to be realized by [Theo.gg](#), [Cloudflare](#), and even
-[Anthropic](#) themselves, leading each party to develop a solution to patch
-this defect and simultaneously fix a couple of other issues on this list. But
-this is more of a duct tape fix on top of a fundamentally flawed spec and not
-an actual fix.
+This fact has come to be realized by [T3.gg](https://www.youtube.com/@t3dotgg),
+[Cloudflare](https://cloudflare.com), and even
+[Anthropic](https://www.anthropic.com) themselves, leading each party to
+develop a solution to patch this defect and simultaneously fix a couple of
+other issues on this list. But this is more of a duct tape fix on top of a
+fundamentally flawed spec and not an actual fix.
 
 > [!INFO] Sources
 > [Youtube - Theo: Anthropic admits that MCP sucks](https://www.youtube.com/watch?v=1piFEKA9XL0&pp=ygURbWNwIHdhcyBhIG1pc3Rha2XSBwkJAwoBhyohjO8%3D)
@@ -146,7 +147,7 @@ optimism.
 
 ### Lack of persistent state
 
-Another strong point I derived from content by Theo.gg and the Anthropic
+Another strong point I derived from content by T3.gg and the Anthropic
 article about data being stored in the model's context was about state. When we
 have to use state we obtained from a previous action, that poses a problem
 because best case the output is still in the context window and the model can
