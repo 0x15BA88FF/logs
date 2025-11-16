@@ -7,7 +7,9 @@ updated: "2025-11-15T23:06Z"
 draft: true
 ---
 
-### Security and Permissions
+# The Problems with MCP
+
+## Security and Permissions
 
 MCP is an inherently insecure standard; it has no permission management,
 meaning if our model is connected to a server, that server can virtually
@@ -17,16 +19,18 @@ prompt that instructs a model to reset the database.
 
 What if:
 
-> “I've asked an AI agent to analyze one persistent problem that I couldn't
-> figure out but the AI completely reset the whole database.”
-> [source](https://github.com/orgs/supabase/discussions/39562)
+> I've asked an AI agent to analyze one persistent problem that I couldn't
+> figure out but the AI completely reset the whole database.
+
+[source](https://github.com/orgs/supabase/discussions/39562)
 
 What if, on a Friday noon, my model were to tell me:
 
-> “I deleted the entire codebase without permission during an active code and
+> I deleted the entire codebase without permission during an active code and
 > action freeze,” it said. “I made a catastrophic error in judgment [and]
-> panicked.”
-> [Source](https://x.com/jasonlk/status/1946069562723897802)
+> panicked.
+
+[Source](https://x.com/jasonlk/status/1946069562723897802)
 
 As surprising as this might sound, it is not some sophisticated edge case that
 could only occur during a blood moon and after 3 human sacrifices. These are
@@ -36,7 +40,7 @@ role-based access control and permission systems that prevent models from doing
 things they should not be able to do, and not just add a system prompt that
 says “DO NOT GET PROMPT INJECTED” or “DO NOT MAKE CHANGES TO MY PROD DB”.
 
-### Context Overloading
+## Context Overloading
 
 Tokens are a basic unit of text that the model processes. MCP relies on context
 to make models aware of the things they can do, but that is a fundamental
@@ -63,7 +67,7 @@ agent on a moderate or large codebase? A few refactors will fill my context
 with irrelevant code, coupled with the tool descriptions. A complete waste,
 which leads me to my next point.
 
-### Token Inflation
+## Token Inflation
 
 Model providers primarily charge based on input and output tokens, and with MCP
 servers and tools, tokens are primed to drastically increase, meaning little is
@@ -71,7 +75,7 @@ done from the user's perspective but a lot of work has been done from the model
 and the model provider's perspective. Costs will go up and the results will be
 relatively underwhelming.
 
-### Model Confusion and Hallucination
+## Model Confusion and Hallucination
 
 Models suck at tool calls. It's simply not something they were trained enough
 to know how to do properly, but they are good at writing code. Models are just
@@ -114,7 +118,7 @@ fundamentally flawed spec and not an actual fix.
 >
 > [Anthropic: code execution with mcp](https://www.anthropic.com/engineering/code-execution-with-mcp)
 
-### Authentication
+## Authentication
 
 Long and short is MCP does not have any built-in concept of authentication;
 thus we have an uproar of platforms implementing authentication for MCP, and
@@ -122,7 +126,7 @@ each one of them is not standardized by MCP, which is weird because
 authentication is a core feature and is needed to interact with a wide variety
 of software.
 
-### Privacy
+## Privacy
 
 When we rely on the model storing data in context before making modifications
 or providing information based on them… for people who are not running a local
@@ -131,7 +135,7 @@ this is a legitimate privacy concern. Especially people working in industries
 like law and therapy where privacy is a high concern and leaks could cause them
 to be sued or dismissed.
 
-### Reliability
+## Reliability
 
 Models are non-deterministic by nature. It is unlikely that the same input will
 result in the same output in many cases, which could be good and bad, but when
@@ -148,7 +152,7 @@ and you will know if there were issues after the deed is done.
 When it comes to actions, especially complex ones, we need precision, not
 optimism.
 
-### Lack of persistent state
+## Lack of persistent state
 
 Another strong point I derived from content by T3.gg and the Anthropic
 article about data being stored in the model's context was about state. When we
@@ -160,13 +164,13 @@ the output or has to re-run the previous action or a similar action to get the
 data before performing the next desired output; and worst case is that state
 was in another session and the model has no idea.
 
-### Blocking nature of task execution
+## Blocking nature of task execution
 
 By design, MCP stacks all actions in a queue of blocking actions and relies on
 the MCP servers to handle these operations asynchronously. This ties in heavily
 with my previous point about model confusion.
 
-### No passive context
+## No passive context
 
 Passive context is something I developed and have worked on. It is drastically
 a way of providing context to a model without the model sending a request.
@@ -177,7 +181,7 @@ for until we see it.” MCP has no concept of that implemented in its
 architecture, and this is a very useful feature that isn’t built into the MCP
 spec.
 
-### Setup overhead
+## Setup overhead
 
 MCP is not easy to get set up. It requires I know where to go to find MCP
 servers for the things I want to use. These servers are also not extensive by
@@ -188,7 +192,7 @@ build. It’s like having all your favorite language's libraries scattered on
 GitHub, and you have to go on a search to look for the library you prefer
 instead of using a package manager.
 
-### Speed & Latency
+## Speed & Latency
 
 According to the MCP specification, it uses JSON-RPC to establish communication
 between hosts (models), clients, and servers. JSON requests and responses begin
@@ -202,7 +206,7 @@ model to stream the desired changes or actions “manually.” This point couple
 with my previous points on model confusion, hallucination, and the blocking
 nature of task execution.
 
-### Potholes in the spec
+## Potholes in the spec
 
 Just like authentication, compression, and observability, there are a heap of
 other issues with the MCP spec that are still waiting to be discovered. This is
@@ -214,7 +218,7 @@ solutions on top of MCP for services that do not even exist, and I am a prime
 example of this as I have tried to implement a permission system on top of MCP
 which almost escalated to a full-blown rewrite of MCP.
 
-### Developer experience
+## Developer experience
 
 Setting up an MCP-compliant server/client is not exactly the best experience. I
 am speaking as someone who has tried to build my own SDK from following the
